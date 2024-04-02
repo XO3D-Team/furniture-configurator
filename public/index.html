@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acumen Furniture Configurator</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<style>
+    :root {
+        --green: #7D8260;
+        --pink: #e67d9133;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    .container.main {
+        height: 100vh;
+    }
+
+    .radio-container {
+        display: grid;
+        justify-content: center;
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        gap: 10px;
+        row-gap: 10px;
+        column-gap: 10px;
+        list-style-type: none;
+    }
+
+    li {
+        padding: 5px;
+        font-size: 0.9rem;
+        border: 1px solid #E3E3E3;
+        border-radius: 10px;
+    }
+
+    .right-pane {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+    .left-pane {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 2;
+        padding: 20px;
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        margin: 0 auto;
+    }
+
+    input[type=radio] {
+        display: none;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    li.selected {
+        background-color: var(--green);
+        color: #fff;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    .radio-container img {
+        margin-bottom: 5px;
+    }
+
+    @media screen and (max-width: 768px){
+
+        .container {
+            width: 100%;
+        }
+        
+        .container.main {
+            flex-direction: column;
+            height: fit-content;
+        }
+
+        ul {
+            /* grid-auto-flow: column; */
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+</style>
+
+<body>
+    <div class="container main">
+        <div class="left-pane">
+            <canvas id="myCanvas" width="800" height="600"></canvas>
+        </div>
+        <div class="right-pane">
+            <h2>Build Your Table</h2>
+            <h3>Tops (Table & Bench)</h3>
+            <p>Please choose timber grade</p>
+            <hr>
+            <div class="container timber-grade">
+                <ul>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="timber-grade" value="Rustic" checked="checked"/>
+                            <img src="img/rustic.png" alt="Image" class="radio-img">
+                            Rustic
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="timber-grade" value="Smooth" />
+                            <img src="img/smooth.jpg" alt="Image" class="radio-img">
+                            Smooth
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <p>Please choose your table edge style</p>
+            <hr>
+            <div class="container table-edge">
+                <ul>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="table-edge-style" value="Live Edge" checked="checked"/>
+                            <img src="img/live-edge.png" alt="Image" class="radio-img">
+                            Live Edge
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-edge-style" value="Rounded Edge" />
+                            <img src="img/rounded-edge.png" alt="Image" class="radio-img">
+                            Rounded Edge
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <p>Please choose your table wood colour</p>
+            <hr>
+            <div class="container wood-color">
+                <ul>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Antique Oak" checked="checked"/>
+                            <img src="img/Swatch - Antique Oak.png" alt="Antique Oak" class="radio-img">
+                            Antique Oak
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Clear Wax" />
+                            <img src="img/Swatch - Clear Wax.png" alt="Clear Wax" class="radio-img">
+                            Clear Wax
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Forest" />
+                            <img src="img/Swatch - Forest.png" alt="Forest" class="radio-img">
+                            Forest
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Grey Wash" />
+                            <img src="img/Swatch - Grey Wash.png" alt="Grey Wash" class="radio-img">
+                            Grey Wash
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Jacobean" />
+                            <img src="img/Swatch - Jacobean.png" alt="Jacobean" class="radio-img">
+                            Jacobean
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Lime Wax" />
+                            <img src="img/Swatch - Lime Wax.png" alt="Lime Wax" class="radio-img">
+                            Lime Wax
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Rugger Brown" />
+                            <img src="img/Swatch - Rugger.png" alt="Rugger Brown" class="radio-img">
+                            Rugger Brown
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <h3>Legs (Table & Bench)</h3>
+            <p>Please choose leg style</p>
+            <hr>
+            <div class="container leg-style">
+                <ul>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="leg-style" value="Spider" checked="checked"/>
+                            <img src="img/spider.jpg" alt="Image" class="radio-img">
+                            Spider
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="leg-style" value="Square" />
+                            <img src="img/square.jpg" alt="Image" class="radio-img">
+                            Square
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="leg-style" value="Trapeze" />
+                            <img src="img/trapeze.jpg" alt="Image" class="radio-img">
+                            Trapeze
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="leg-style" value="V" />
+                            <img src="img/v.jpg" alt="Image" class="radio-img">
+                            V
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="leg-style" value="X" />
+                            <img src="img/x.jpg" alt="Image" class="radio-img">
+                            X
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <p>Please choose leg colour</p>
+            <hr>
+            <div class="container leg-weld">
+                <ul>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="frame-welded" value="Welded" checked="checked"/>
+                            <img src="img/welded.jpg" alt="Image" class="radio-img">
+                            Raw Steel
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="frame-welded" value="Unwelded" />
+                            <img src="img/unwelded.jpg" alt="Image" class="radio-img">
+                            Black
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+
+        //defaults
+        let timber_grade = "Rustic";
+        let tedge = "Live Edge";
+        let twood_color = "Antique Oak";
+        let leg_style = "Spider";
+        let frame_welded = "Welded";
+        
+        const base_url = "";
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        //defaults
+        let images = [
+            base_url + 'LBL Spider Frame Welded Steel.png',
+            base_url + 'LBT Rustic Live Edge Antique Oak.png', 
+            base_url + 'TBL Spider Frame Welded Steel.png', 
+            base_url + 'TBT Rustic Live Edge Antique Oak.png', 
+            base_url + 'RBL Spider Frame Welded Steel.png', 
+            base_url + 'RBT Rustic Live Edge Antique Oak.png', 
+        ];
+    
+        // Load all images
+        let loadedImages = [];
+        let imagesLoaded = 0;
+
+
+        $(document).ready(function(){
+            $('input[type=radio][name=timber-grade]').change(function() {
+                
+                $('.timber-grade .selected').removeClass('selected');
+                $(this).parent().parent().addClass('selected');
+                timber_grade = $(this).val();
+                loadImages();
+                
+            });
+
+            $('input[type=radio][name=table-edge-style]').change(function() {
+                $('.table-edge .selected').removeClass('selected');
+                $(this).parent().parent().addClass('selected');
+                tedge = $(this).val();
+                loadImages();
+            });
+
+            $('input[type=radio][name=table-wood-color]').change(function() {
+                $('.wood-color .selected').removeClass('selected');
+                $(this).parent().parent().addClass('selected');
+                twood_color = $(this).val();
+                loadImages();
+            });
+
+            $('input[type=radio][name=leg-style]').change(function() {
+                $('.leg-style .selected').removeClass('selected');
+                $(this).parent().parent().addClass('selected');
+                leg_style = $(this).val();
+                loadImages();
+            });
+
+            $('input[type=radio][name=frame-welded]').change(function() {
+                $('.leg-weld .selected').removeClass('selected');
+                $(this).parent().parent().addClass('selected');
+                frame_welded = $(this).val();
+                loadImages();
+            });
+
+            // Function to resize the canvas based on the device width
+            function resizeCanvas() {
+
+                console.log(window.innerWidth);
+
+                if(window.innerWidth < 1024){
+                    canvas.width = 300; // Set canvas width to window width
+                    canvas.height = 225; // Set canvas height to window height
+                    // Redraw content on the canvas if necessary
+                    // For demonstration purposes, I'm just filling the canvas with a color
+                    // ctx.fillStyle = 'lightblue';
+                    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                
+            }
+
+            // Call the resizeCanvas function initially
+            resizeCanvas();
+
+            // Call the resizeCanvas function whenever the window is resized
+            $(window).on('resize', resizeCanvas);
+        });
+
+        function get_filepath(){
+            return timber_grade + " " + tedge + " " + twood_color + ".png";
+        }
+
+        function get_legs_filepath(){
+            return leg_style + " Frame " + frame_welded + " Steel.png";
+        }
+
+        function updateImages(){
+            //tops
+            images[1] = base_url + "LBT " + get_filepath();
+            images[3] = base_url + "TBT " + get_filepath();
+            images[5] = base_url + "RBT " + get_filepath();
+
+            //legs
+            images[0] = base_url + "LBL " + get_legs_filepath();
+            images[2] = base_url + "TBL " + get_legs_filepath(); 
+            images[4] = base_url + "RBL " + get_legs_filepath();
+
+            console.log(images);
+        }
+
+        function loadImages() {
+
+            loadedImages = [];
+            imagesLoaded = 0;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            updateImages();
+
+            for (let i = 0; i < images.length; i++) {
+                let img = new Image();
+                img.onload = img.onerror = function() {
+                    imagesLoaded++;
+                    if (imagesLoaded === images.length) {
+                        setTimeout(function() {
+                            requestAnimationFrame(function() {
+                                drawImages(loadedImages);
+                            });
+                        }, 500); // Delay
+                    }
+                };
+                img.src = images[i];
+                loadedImages.push(img);
+            }
+        }
+
+        // Draw all images onto the canvas
+        function drawImages(images) {
+            var index = 0;
+            var drawNextImage = function() {
+                if (index < images.length) {
+                    ctx.drawImage(images[index], 0, 0, canvas.width, canvas.height);
+                    index++;
+                    requestAnimationFrame(drawNextImage); // Continue drawing next image
+                }
+            };
+            requestAnimationFrame(drawNextImage); // Start drawing images
+        }
+
+        window.onload = loadImages
+
+        // Function to resize the canvas based on the device width
+        function resizeCanvas() {
+
+            if(window.innderWidth < 768){
+                canvas.width = window.innerWidth; // Set canvas width to window width
+                canvas.height = window.innerHeight; // Set canvas height to window height
+                // Redraw content on the canvas if necessary
+                // For demonstration purposes, I'm just filling the canvas with a color
+                // ctx.fillStyle = 'lightblue';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        // Call the resizeCanvas function initially
+        resizeCanvas();
+
+        // Call the resizeCanvas function whenever the window is resized
+        window.addEventListener('resize', resizeCanvas);
+    
+    </script>
+</body>
+</html>
