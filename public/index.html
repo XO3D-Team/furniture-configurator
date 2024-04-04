@@ -9,7 +9,7 @@
 </head>
 <style>
     :root {
-        --green: #7D8260;
+        --green: #687464;
         --pink: #e67d9133;
     }
 
@@ -50,13 +50,14 @@
         padding: 5px;
         font-size: 0.9rem;
         border: 1px solid #E3E3E3;
-        border-radius: 10px;
+        border-radius: 0;
     }
 
     .right-pane {
         flex: 1;
         padding: 20px;
         overflow-y: auto; /* Enable vertical scrolling */
+        margin-top: 68px;
     }
 
     .left-pane {
@@ -80,6 +81,11 @@
         height: 100px;
     }
 
+    img.logo {
+        width: 270px;
+        height: 68px;
+    }
+
     li.selected {
         background-color: var(--green);
         color: #fff;
@@ -93,6 +99,32 @@
         margin-bottom: 5px;
     }
 
+    #logo-container {
+        background: #f5f5f5;
+        position: absolute;
+        display: flex;
+        z-index: 10;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .subheading {
+        background: rgb(230 125 145 / 20%);
+        padding: 15px;
+    }
+
+    .table-edge .radio-container {
+        background-color: #fff;
+    }
+
+    .table-edge span {
+        padding-top: 5px;
+    }
+
+    .table-edge .selected span {
+        background-color: var(--green);
+    }
+
     @media screen and (max-width: 768px){
 
         .container {
@@ -102,6 +134,11 @@
         .container.main {
             flex-direction: column;
             height: fit-content;
+            padding-top: 68px;
+        }
+
+        .right-pane {
+            margin-top: 0;
         }
 
         ul {
@@ -113,92 +150,67 @@
 </style>
 
 <body>
+    <div class="container" id="logo-container">
+        <a href="https://acumencollection.co.uk/" title="Go back to Acumen Collection home page"><img class="logo" src="img/ACUMEN_logo.png" alt="Acumen Collection Logo" width="270" height="68"></a>
+    </div>
     <div class="container main">
         <div class="left-pane">
             <canvas id="myCanvas" width="800" height="600"></canvas>
         </div>
         <div class="right-pane">
+            
             <h2>Build Your Table</h2>
             <h3>Tops (Table & Bench)</h3>
-            <p>Please choose timber grade</p>
-            <hr>
+            <p class="subheading">Please choose finish style</p>
+            
             <div class="container timber-grade">
                 <ul>
                     <li class="selected">
                         <label class="radio-container">
                             <input type="radio" name="timber-grade" value="Rustic" checked="checked"/>
-                            <img src="img/rustic.png" alt="Image" class="radio-img">
+                            <img id="rustic-finish" src="img/Table Finish/Rustic Swatch - Clear Wax.png" alt="Image" class="radio-img">
                             Rustic
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="timber-grade" value="Smooth" />
-                            <img src="img/smooth.jpg" alt="Image" class="radio-img">
+                            <img id="smooth-finish" src="img/Table Finish/Smooth Swatch - Clear Wax.png" alt="Image" class="radio-img">
                             Smooth
                         </label>
                     </li>
                 </ul>
             </div>
-            <hr>
-            <p>Please choose your table edge style</p>
-            <hr>
+            
+            <p class="subheading">Please choose your table edge style</p>
+            
             <div class="container table-edge">
                 <ul>
                     <li class="selected">
                         <label class="radio-container">
                             <input type="radio" name="table-edge-style" value="Live Edge" checked="checked"/>
-                            <img src="img/live-edge.png" alt="Image" class="radio-img">
-                            Live Edge
+                            <img id="live-edge" src="img/Table Edge Previews/Live Edge - Clear Wax.png" alt="Image" class="radio-img">
+                            <span>Live Edge</span>
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="table-edge-style" value="Rounded Edge" />
-                            <img src="img/rounded-edge.png" alt="Image" class="radio-img">
-                            Rounded Edge
+                            <img id="rounded-edge" src="img/Table Edge Previews/Rounded Edge - Clear Wax.png" alt="Image" class="radio-img">
+                            <span>Rounded Edge</span>
                         </label>
                     </li>
                 </ul>
             </div>
-            <hr>
-            <p>Please choose your table wood colour</p>
-            <hr>
+            <p class="subheading">Please choose your table wood colour</p>
+          
             <div class="container wood-color">
                 <ul>
                     <li class="selected">
                         <label class="radio-container">
-                            <input type="radio" name="table-wood-color" value="Antique Oak" checked="checked"/>
-                            <img src="img/Swatch - Antique Oak.png" alt="Antique Oak" class="radio-img">
-                            Antique Oak
-                        </label>
-                    </li>
-                    <li>
-                        <label class="radio-container">
-                            <input type="radio" name="table-wood-color" value="Clear Wax" />
+                            <input type="radio" name="table-wood-color" value="Clear Wax" checked="checked"/>
                             <img src="img/Swatch - Clear Wax.png" alt="Clear Wax" class="radio-img">
                             Clear Wax
-                        </label>
-                    </li>
-                    <li>
-                        <label class="radio-container">
-                            <input type="radio" name="table-wood-color" value="Forest" />
-                            <img src="img/Swatch - Forest.png" alt="Forest" class="radio-img">
-                            Forest
-                        </label>
-                    </li>
-                    <li>
-                        <label class="radio-container">
-                            <input type="radio" name="table-wood-color" value="Grey Wash" />
-                            <img src="img/Swatch - Grey Wash.png" alt="Grey Wash" class="radio-img">
-                            Grey Wash
-                        </label>
-                    </li>
-                    <li>
-                        <label class="radio-container">
-                            <input type="radio" name="table-wood-color" value="Jacobean" />
-                            <img src="img/Swatch - Jacobean.png" alt="Jacobean" class="radio-img">
-                            Jacobean
                         </label>
                     </li>
                     <li>
@@ -210,24 +222,52 @@
                     </li>
                     <li>
                         <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Grey Wash" />
+                            <img src="img/Swatch - Grey Wash.png" alt="Grey Wash" class="radio-img">
+                            Grey Wash
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Antique Oak" />
+                            <img src="img/Swatch - Antique Oak.png" alt="Antique Oak" class="radio-img">
+                            Antique Oak
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Forest" />
+                            <img src="img/Swatch - Forest.png" alt="Forest" class="radio-img">
+                            Forest
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
                             <input type="radio" name="table-wood-color" value="Rugger Brown" />
                             <img src="img/Swatch - Rugger.png" alt="Rugger Brown" class="radio-img">
                             Rugger Brown
                         </label>
                     </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-wood-color" value="Jacobean" />
+                            <img src="img/Swatch - Jacobean.png" alt="Jacobean" class="radio-img">
+                            Jacobean
+                        </label>
+                    </li>
                 </ul>
             </div>
-            <hr>
+            
             <h3>Legs (Table & Bench)</h3>
-            <p>Please choose leg style</p>
-            <hr>
+            <p class="subheading">Please choose leg style</p>
+            
             <div class="container leg-style">
                 <ul>
                     <li class="selected">
                         <label class="radio-container">
-                            <input type="radio" name="leg-style" value="Spider" checked="checked"/>
-                            <img src="img/spider.jpg" alt="Image" class="radio-img">
-                            Spider
+                            <input type="radio" name="leg-style" value="X" checked="checked"/>
+                            <img src="img/x.jpg" alt="Image" class="radio-img">
+                            X Frame
                         </label>
                     </li>
                     <li>
@@ -241,28 +281,28 @@
                         <label class="radio-container">
                             <input type="radio" name="leg-style" value="Trapeze" />
                             <img src="img/trapeze.jpg" alt="Image" class="radio-img">
-                            Trapeze
+                            Trapezium
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="leg-style" value="V" />
                             <img src="img/v.jpg" alt="Image" class="radio-img">
-                            V
+                            V Frame
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
-                            <input type="radio" name="leg-style" value="X" />
-                            <img src="img/x.jpg" alt="Image" class="radio-img">
-                            X
+                            <input type="radio" name="leg-style" value="Spider" />
+                            <img src="img/spider.jpg" alt="Image" class="radio-img">
+                            Spider
                         </label>
                     </li>
                 </ul>
             </div>
-            <hr>
-            <p>Please choose leg colour</p>
-            <hr>
+
+            <p class="subheading">Please choose leg colour</p>
+            
             <div class="container leg-weld">
                 <ul>
                     <li class="selected">
@@ -289,7 +329,7 @@
         //defaults
         let timber_grade = "Rustic";
         let tedge = "Live Edge";
-        let twood_color = "Antique Oak";
+        let twood_color = "Clear Wax";
         let leg_style = "Spider";
         let frame_welded = "Welded";
         
@@ -299,12 +339,12 @@
         
         //defaults
         let images = [
-            base_url + 'LBL Spider Frame Welded Steel.png',
-            base_url + 'LBT Rustic Live Edge Antique Oak.png', 
-            base_url + 'TBL Spider Frame Welded Steel.png', 
-            base_url + 'TBT Rustic Live Edge Antique Oak.png', 
-            base_url + 'RBL Spider Frame Welded Steel.png', 
-            base_url + 'RBT Rustic Live Edge Antique Oak.png', 
+            base_url + 'LBL X Frame Welded Steel.png',
+            base_url + 'LBT Rustic Live Edge Clear Wax.png', 
+            base_url + 'TBL X Frame Welded Steel.png', 
+            base_url + 'TBT Rustic Live Edge Clear Wax.png', 
+            base_url + 'RBL X Frame Welded Steel.png', 
+            base_url + 'RBT Rustic Live Edge Clear Wax.png', 
         ];
     
         // Load all images
@@ -333,6 +373,24 @@
                 $('.wood-color .selected').removeClass('selected');
                 $(this).parent().parent().addClass('selected');
                 twood_color = $(this).val();
+
+                let rusticFinishPath = `img/Table Finish/Rustic Swatch - ${twood_color}.png`;
+                let smoothFinishPath = `img/Table Finish/Smooth Swatch - ${twood_color}.png`;
+                let liveEdgePath = `img/Table Edge Previews/Live Edge - ${twood_color}.png`;
+                let roundedEdgePath = `img/Table Edge Previews/Rounded Edge - ${twood_color}.png`;
+                
+                
+                //update finish style and table edge preview images
+                $('#rustic-finish').attr('src', rusticFinishPath);
+                $('#rustic-finish').attr('alt', `Rustic Swatch - ${twood_color}`);
+                $('#smooth-finish').attr('src', smoothFinishPath);
+                $('#smooth-finish').attr('alt', `Smooth Swatch - ${twood_color}`);
+
+                $('#live-edge').attr('src', liveEdgePath);
+                $('#live-edge').attr('alt', `Live Edge - ${twood_color}`);
+                $('#rounded-edge').attr('src', roundedEdgePath);
+                $('#rounded-edge').attr('alt', `Rounded Edge - ${twood_color}`);
+
                 loadImages();
             });
 
