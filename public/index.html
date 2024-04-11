@@ -7,149 +7,7 @@
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<style>
-    :root {
-        --green: #687464;
-        --pink: #e67d9133;
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
-
-    .container {
-        display: flex;
-        width: 100%;
-        flex-basis: 100%;
-    }
-
-    .container.main {
-        height: 100vh;
-    }
-
-    .radio-container {
-        display: grid;
-        justify-content: center;
-    }
-
-    ul {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0;
-        gap: 10px;
-        row-gap: 10px;
-        column-gap: 10px;
-        list-style-type: none;
-    }
-
-    li {
-        padding: 5px;
-        font-size: 0.9rem;
-        border: 1px solid #E3E3E3;
-        border-radius: 0;
-    }
-
-    .right-pane {
-        flex: 1;
-        padding: 20px;
-        overflow-y: auto; /* Enable vertical scrolling */
-        margin-top: 68px;
-    }
-
-    .left-pane {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 2;
-        padding: 20px;
-        position: sticky;
-        top: 0;
-        background-color: #fff;
-        margin: 0 auto;
-    }
-
-    input[type=radio] {
-        display: none;
-    }
-
-    img {
-        width: 100px;
-        height: 100px;
-    }
-
-    img.logo {
-        width: 270px;
-        height: 68px;
-    }
-
-    li.selected {
-        background-color: var(--green);
-        color: #fff;
-    }
-
-    label {
-        cursor: pointer;
-    }
-
-    .radio-container img {
-        margin-bottom: 5px;
-    }
-
-    #logo-container {
-        background: #f5f5f5;
-        position: absolute;
-        display: flex;
-        z-index: 10;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .subheading {
-        background-color: var(--green);        
-        padding: 15px;
-        color: #fff;
-    }
-
-    .table-edge .radio-container {
-        background-color: #fff;
-    }
-
-    .table-edge span {
-        padding-top: 5px;
-    }
-
-    .table-edge .selected span {
-        background-color: var(--green);
-    }
-
-    @media screen and (max-width: 768px){
-
-        .container {
-            width: 100%;
-        }
-        
-        .container.main {
-            flex-direction: column;
-            height: fit-content;
-            padding-top: 68px;
-        }
-
-        .right-pane {
-            margin-top: 0;
-        }
-
-        ul {
-            /* grid-auto-flow: column; */
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-</style>
-
+<link rel="stylesheet" href="css/style.css">
 <body>
     <div class="container" id="logo-container">
         <a href="https://acumencollection.co.uk/" title="Go back to Acumen Collection home page"><img class="logo" src="img/ACUMEN_logo.png" alt="Acumen Collection Logo" width="270" height="68"></a>
@@ -162,28 +20,34 @@
             
             <h2>Build Your Table</h2>
             <h3>Tops (Table & Bench)</h3>
-            <p class="subheading">Please choose finish style</p>
+            <p class="subheading">Choose edge profile: <span class="timber-grade-selected">Rustic</span></p>
             
             <div class="container timber-grade">
                 <ul>
                     <li class="selected">
                         <label class="radio-container">
                             <input type="radio" name="timber-grade" value="Rustic" checked="checked"/>
-                            <img id="rustic-finish" src="img/Table Finish/Rustic Swatch - Clear Wax.png" alt="Image" class="radio-img">
+                            <img id="rustic-finish" src="img/Material Swatches/Swatch - Clear Wax.png" alt="Image" class="radio-img">
                             Rustic
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="timber-grade" value="Smooth" />
-                            <img id="smooth-finish" src="img/Table Finish/Smooth Swatch - Clear Wax.png" alt="Image" class="radio-img">
-                            Smooth
+                            <img id="smooth-finish" src="img/Material Swatches/Swatch - Clear Wax.png" alt="Image" class="radio-img">
+                            Wooden Planed
                         </label>
                     </li>
                 </ul>
+                <div class="container blurb rustic show">
+                    <p class="text">Our rustic finish is sanded to 80grit and we strive to maintain as much of the rough sawn edge in the grain as possible. Its in the courser grain the wax grabs to create a beautiful two-tone rustic finish. A key attribute of the rustic finish is that there may be slight undulations in each board. This does not detract the practicality of the table-top.</p>
+                </div>
+                <div class="container blurb smooth">
+                    <p class="text">Our modern planed finish is achieved by planing the boards as smooth as possible to make them perfectly flat and even-grained. When wax is applied to a planed board the finish is more consistent. A key attribute of the planed finish is that each board is perfectly flat.</p>
+                </div>
             </div>
             
-            <p class="subheading">Please choose your table edge style</p>
+            <p class="subheading">Please choose your table edge style: <span class="table-edge-selected">Live Edge</span></p>
             
             <div class="container table-edge">
                 <ul>
@@ -203,60 +67,159 @@
                     </li>
                 </ul>
             </div>
-            <p class="subheading">Please choose your table wood colour</p>
-          
+
+            <p class="subheading">Please choose timber thickness: <span class="thickness-selected">35mm (Scaffold Board)</span></p>
+            <div class="container timber-thickness">
+                <ul>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="timber-thickness" value="35mm (Scaffold Board)" checked="checked"/>
+                            <span>35mm (Scaffold Board)</span>
+                        </label>
+                        
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="timber-thickness" value="50mm (Chunky)" />
+                            <span>50mm (Chunky)</span>
+                        </label>
+                    </li>
+                </ul>
+                <p class="warning"><span>!</span>For tables over 180cm we recommend a thickness of 50mm</p>
+            </div>
+
+            <p class="subheading">Require a custom table size?: <span class="table-size-selected">No</span></p>
+            <div class="container table-size">
+                <ul>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-size" value="Yes" />
+                            <span>Yes</span>
+                        </label>
+                    </li>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="table-size" value="No" checked="checked"/>
+                            <span>No</span>
+                        </label>
+                    </li>
+                </ul>
+                <div class="container custom-tbl_size-fields">
+                    <ul>
+                        <li>
+                            <label for="table-length">
+                                LENGTH (cm) Max 300cm:
+                            </label>
+                            <input type="number" name="tlength" id="table-length" min="1" max="300" />
+                        </li>
+                        <li>
+                            <label for="table-width">
+                                WIDTH (cm) Max 132cm:
+                            </label>
+                            <input type="number" name="twidth" id="table-width" min="1" max="132" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="subheading">Choose table top finish: <span class="table-top-finish-selected">Wax Polish</span></p>
+            <div class="container table-top-finish">
+                <ul>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="table-top-finish" value="Wax Polish" checked="checked"/>
+                            <span>Wax Polish</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-top-finish" value="Hard Wax Oil" />
+                            <span>Hard Wax Oil</span>
+                        </label>
+                    </li>
+                </ul>
+                <div class="container blurb wax-polish show">
+                    <p class="text">Formulated to offer excellent results on kiln-dried pine, Fiddes Supreme Wax Polish contains a unique, environmentally friendly blend of waxes that naturally enhances the beauty of your wood. We advise to maintain once a year & of course, we are happy to advise on this.</p>
+                </div>
+                <div class="container blurb hard-wax-oil">
+                    <p class="text">Hard Wax Oil gives a highly durable water and stain resistant finish that is child safe when dry. Can also be used outside and has UV protective qualities. It is recommended that outdoor tables are covered during adverse weather and in the winter.</p>
+                </div>
+            </div>
+            
+            <p class="subheading">Choose wood colour: <span class="wood-color-selected">Clear Wax</span></p>
             <div class="container wood-color">
                 <ul>
                     <li class="selected">
                         <label class="radio-container">
                             <input type="radio" name="table-wood-color" value="Clear Wax" checked="checked"/>
-                            <img src="img/Swatch - Clear Wax.png" alt="Clear Wax" class="radio-img">
+                            <img src="img/Material Swatches/Rustic Swatch - Clear Wax.png" alt="Clear Wax" class="radio-img">
                             Clear Wax
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="table-wood-color" value="Lime Wax" />
-                            <img src="img/Swatch - Lime Wax.png" alt="Lime Wax" class="radio-img">
+                            <img src="img/Material Swatches/Swatch - Lime Wax.png" alt="Lime Wax" class="radio-img">
                             Lime Wax
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="table-wood-color" value="Grey Wash" />
-                            <img src="img/Swatch - Grey Wash.png" alt="Grey Wash" class="radio-img">
+                            <img src="img/Material Swatches/Swatch - Grey Wash.png" alt="Grey Wash" class="radio-img">
                             Grey Wash
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="table-wood-color" value="Antique Oak" />
-                            <img src="img/Swatch - Antique Oak.png" alt="Antique Oak" class="radio-img">
+                            <img src="img/Material Swatches/Swatch - Antique Oak.png" alt="Antique Oak" class="radio-img">
                             Antique Oak
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="table-wood-color" value="Forest" />
-                            <img src="img/Swatch - Forest.png" alt="Forest" class="radio-img">
+                            <img src="img/Material Swatches/Swatch - Forest.png" alt="Forest" class="radio-img">
                             Forest
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="table-wood-color" value="Rugger Brown" />
-                            <img src="img/Swatch - Rugger.png" alt="Rugger Brown" class="radio-img">
+                            <img src="img/Material Swatches/Swatch - Rugger Brown.png" alt="Rugger Brown" class="radio-img">
                             Rugger Brown
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="table-wood-color" value="Jacobean" />
-                            <img src="img/Swatch - Jacobean.png" alt="Jacobean" class="radio-img">
+                            <img src="img/Material Swatches/Swatch - Jacobean.png" alt="Jacobean" class="radio-img">
                             Jacobean
                         </label>
                     </li>
                 </ul>
+                <div class="container blurb clear-wax show">
+                    <p class="text">Clear wax is similar to natural raw oak. The finish is semi translucent and in the rougher / courser areas of the grain the wax grabs to create a light grey tone.</p>
+                </div>
+                <div class="container blurb lime-wax">
+                    <p class="text">Lime wax has a shabby chic look to it. The finish has a pale/white colour and in the rougher / courser areas of the grain the wax grabs to create a chalky white tone.</p>
+                </div>
+                <div class="container blurb grey-wash">
+                    <p class="text">Grey wash has a contemporary feel to it. The finish has a medium grey colour and in the rougher / courser areas of the grain the wax grabs to create a dark grey tone.</p>
+                </div>
+                <div class="container blurb antique-oak">
+                    <p class="text">Antique Oak is a Manns branded water based wood dye. This light brown finish is inbetween clear wax and forest brown and is ideal for customers looking for a very natural light brown colour tone.</p>
+                </div>
+                <div class="container blurb forest">
+                    <p class="text">Forest brown is similar to honey oak. The finish has a golden colour and in the rougher / courser areas of the grain the wax grabs to create a deep rustic orange tone.</p>
+                </div>
+                <div class="container blurb rugger-brown">
+                    <p class="text">Rugger brown is similar to medium oak. The finish has a light brown colour and in the rougher / courser areas of the grain the wax grabs to create a deeper rustic brown tone.</p>
+                </div>
+                <div class="container blurb jacobean">
+                    <p class="text">Jacobean is similar to walnut or mahogany but without the red tones. The finish has a brown colour and in the rougher / courser areas of the grain the wax grabs to create a deeper dark brown tone.</p>
+                </div>
             </div>
             
             <h3>Legs (Table & Bench)</h3>
@@ -302,219 +265,61 @@
                 </ul>
             </div>
 
-            <p class="subheading">Please choose leg colour</p>
+            <p class="subheading">Please choose leg colour: <span class="leg-color-selected">Raw Steel</span></p>
             
             <div class="container leg-weld">
                 <ul>
                     <li class="selected">
                         <label class="radio-container">
                             <input type="radio" name="frame-welded" value="Welded" checked="checked"/>
-                            <img src="img/welded.jpg" alt="Image" class="radio-img">
+                            <img src="img/welded.jpg" alt="Raw Steel Leg Finish" class="radio-img">
                             Raw Steel
                         </label>
                     </li>
                     <li>
                         <label class="radio-container">
                             <input type="radio" name="frame-welded" value="Unwelded" />
-                            <img src="img/unwelded.jpg" alt="Image" class="radio-img">
+                            <img src="img/unwelded.jpg" alt="Black Leg Finish" class="radio-img">
                             Black
                         </label>
                     </li>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="frame-welded" value="Custom RAL" />
+                            <img src="img/RAL.png" alt="Custom RAL" class="radio-img">
+                            Custom RAL
+                        </label>
+                    </li>
                 </ul>
+                <div class="container blurb raw-steel show">
+                    <div>
+                        <img src="img/raw steel leg finish.avif" alt="clear coat of lacquer over raw steel">
+                        <p class="text">The clear coat of lacquer over raw steel with visible welds provides a gracious raw industrial finish. Our coatings are recommended for indoor use only. Contact us prior to ordering if you wish to use the table outside.</p>
+                    </div>
+                    
+                </div>
+                <div class="container blurb black">
+                    <div>
+                        <img src="img/black leg finish.avif" alt="Satin black powder coat">
+                        <p class="text">Satin black powder coat provides a tough protective layer. Our unique surface conditioning operation on all steel provides a beautifully clean and uniform look. Our coatings are recommended for indoor use only.</p>
+                    </div>
+                </div>
+                <div class="container blurb custom-ral">
+                    <div>
+                        <p class="text">We are able to offer any RAL colour powder coat finish. Please provide the required RAL colour in the below text box. All powder coats are satin finish and provide a tough protective layer. Our coatings are recommended for indoor use only. Contact us prior to ordering if you wish to use the table outside.</p>
+                    </div>
+                    <div class="container">
+                        <label for="table-length">
+                            Enter RAL number here:
+                        </label>
+                        <input type="text" name="ral-number" id="ral-number" />
+                        <p>To find the right RAL Number <a href="https://acumencollection.co.uk/pages/ral-colours">click here</a></p>
+                    </div>
+                </div>
             </div>
         </div>
         
     </div>
-    <script>
-
-        //defaults
-        let timber_grade = "Rustic";
-        let tedge = "Live Edge";
-        let twood_color = "Clear Wax";
-        let leg_style = "Spider";
-        let frame_welded = "Welded";
-        
-        const base_url = "";
-        const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        //defaults
-        let images = [
-            base_url + 'LBL X Frame Welded Steel.png',
-            base_url + 'LBT Rustic Live Edge Clear Wax.png', 
-            base_url + 'TBL X Frame Welded Steel.png', 
-            base_url + 'TBT Rustic Live Edge Clear Wax.png', 
-            base_url + 'RBL X Frame Welded Steel.png', 
-            base_url + 'RBT Rustic Live Edge Clear Wax.png', 
-        ];
-    
-        // Load all images
-        let loadedImages = [];
-        let imagesLoaded = 0;
-
-
-        $(document).ready(function(){
-            $('input[type=radio][name=timber-grade]').change(function() {
-                
-                $('.timber-grade .selected').removeClass('selected');
-                $(this).parent().parent().addClass('selected');
-                timber_grade = $(this).val();
-                loadImages();
-                
-            });
-
-            $('input[type=radio][name=table-edge-style]').change(function() {
-                $('.table-edge .selected').removeClass('selected');
-                $(this).parent().parent().addClass('selected');
-                tedge = $(this).val();
-                loadImages();
-            });
-
-            $('input[type=radio][name=table-wood-color]').change(function() {
-                $('.wood-color .selected').removeClass('selected');
-                $(this).parent().parent().addClass('selected');
-                twood_color = $(this).val();
-
-                let rusticFinishPath = `img/Table Finish/Rustic Swatch - ${twood_color}.png`;
-                let smoothFinishPath = `img/Table Finish/Smooth Swatch - ${twood_color}.png`;
-                let liveEdgePath = `img/Table Edge Previews/Live Edge - ${twood_color}.png`;
-                let roundedEdgePath = `img/Table Edge Previews/Rounded Edge - ${twood_color}.png`;
-                
-                
-                //update finish style and table edge preview images
-                $('#rustic-finish').attr('src', rusticFinishPath);
-                $('#rustic-finish').attr('alt', `Rustic Swatch - ${twood_color}`);
-                $('#smooth-finish').attr('src', smoothFinishPath);
-                $('#smooth-finish').attr('alt', `Smooth Swatch - ${twood_color}`);
-
-                $('#live-edge').attr('src', liveEdgePath);
-                $('#live-edge').attr('alt', `Live Edge - ${twood_color}`);
-                $('#rounded-edge').attr('src', roundedEdgePath);
-                $('#rounded-edge').attr('alt', `Rounded Edge - ${twood_color}`);
-
-                loadImages();
-            });
-
-            $('input[type=radio][name=leg-style]').change(function() {
-                $('.leg-style .selected').removeClass('selected');
-                $(this).parent().parent().addClass('selected');
-                leg_style = $(this).val();
-                loadImages();
-            });
-
-            $('input[type=radio][name=frame-welded]').change(function() {
-                $('.leg-weld .selected').removeClass('selected');
-                $(this).parent().parent().addClass('selected');
-                frame_welded = $(this).val();
-                loadImages();
-            });
-
-            // Function to resize the canvas based on the device width
-            function resizeCanvas() {
-
-                console.log(window.innerWidth);
-
-                if(window.innerWidth < 1024){
-                    canvas.width = 300; // Set canvas width to window width
-                    canvas.height = 225; // Set canvas height to window height
-                    // Redraw content on the canvas if necessary
-                    // For demonstration purposes, I'm just filling the canvas with a color
-                    // ctx.fillStyle = 'lightblue';
-                    // ctx.fillRect(0, 0, canvas.width, canvas.height);
-                }
-                
-            }
-
-            // Call the resizeCanvas function initially
-            resizeCanvas();
-
-            // Call the resizeCanvas function whenever the window is resized
-            $(window).on('resize', resizeCanvas);
-        });
-
-        function get_filepath(){
-            return timber_grade + " " + tedge + " " + twood_color + ".png";
-        }
-
-        function get_legs_filepath(){
-            return leg_style + " Frame " + frame_welded + " Steel.png";
-        }
-
-        function updateImages(){
-            //tops
-            images[1] = base_url + "LBT " + get_filepath();
-            images[3] = base_url + "TBT " + get_filepath();
-            images[5] = base_url + "RBT " + get_filepath();
-
-            //legs
-            images[0] = base_url + "LBL " + get_legs_filepath();
-            images[2] = base_url + "TBL " + get_legs_filepath(); 
-            images[4] = base_url + "RBL " + get_legs_filepath();
-
-            console.log(images);
-        }
-
-        function loadImages() {
-
-            loadedImages = [];
-            imagesLoaded = 0;
-            
-            // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            updateImages();
-
-            for (let i = 0; i < images.length; i++) {
-                let img = new Image();
-                img.onload = img.onerror = function() {
-                    imagesLoaded++;
-                    if (imagesLoaded === images.length) {
-                        setTimeout(function() {
-                            requestAnimationFrame(function() {
-                                drawImages(loadedImages);
-                            });
-                        }, 500); // Delay
-                    }
-                };
-                img.src = images[i];
-                loadedImages.push(img);
-            }
-        }
-
-        // Draw all images onto the canvas
-        function drawImages(images) {
-            var index = 0;
-            var drawNextImage = function() {
-                if (index < images.length) {
-                    ctx.drawImage(images[index], 0, 0, canvas.width, canvas.height);
-                    index++;
-                    requestAnimationFrame(drawNextImage); // Continue drawing next image
-                }
-            };
-            requestAnimationFrame(drawNextImage); // Start drawing images
-        }
-
-        window.onload = loadImages
-
-        // Function to resize the canvas based on the device width
-        function resizeCanvas() {
-
-            if(window.innderWidth < 768){
-                canvas.width = window.innerWidth; // Set canvas width to window width
-                canvas.height = window.innerHeight; // Set canvas height to window height
-                // Redraw content on the canvas if necessary
-                // For demonstration purposes, I'm just filling the canvas with a color
-                // ctx.fillStyle = 'lightblue';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-            }
-        }
-
-        // Call the resizeCanvas function initially
-        resizeCanvas();
-
-        // Call the resizeCanvas function whenever the window is resized
-        window.addEventListener('resize', resizeCanvas);
-    
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

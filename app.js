@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const shopify = new shopifyAPI({
-  shopName: 'your-shop-name',
+  shopName: 'Acumen Collection',
   apiKey: process.env.SHOPIFY_API_KEY,
   password: process.env.SHOPIFY_API_SECRET,
 });
