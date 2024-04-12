@@ -33,9 +33,13 @@ $(document).ready(function(){
         $('.timber-grade .selected').removeClass('selected');
         $(this).parent().parent().addClass('selected');
         timber_grade = $(this).val();
-        loadImages();
 
-        $('.timber-grade-selected').text(timber_grade=='Rustic'?'Rustic':'Wooden Planed');
+        if(frame_welded != "Custom RAL"){
+            loadImages();
+            $('.timber-grade-selected').text(timber_grade=='Rustic'?'Rustic':'Wooden Planed');
+        }else {
+            $('.timber-grade-selected').text(timber_grade=='Rustic'?'Rustic':'Wooden Planed');
+        }
 
         if( timber_grade == "Rustic" ){
             $('.timber-grade .blurb').hide();
@@ -52,9 +56,14 @@ $(document).ready(function(){
         $('.table-edge .selected').removeClass('selected');
         $(this).parent().parent().addClass('selected');
         tedge = $(this).val();
-        loadImages();
-
-        $('.table-edge-selected').text(tedge);
+        
+        if(frame_welded != "Custom RAL"){
+            loadImages();
+            $('.table-edge-selected').text(tedge);
+        }else {
+            $('.table-edge-selected').text(tedge);
+        }
+        
     });
 
     //timber thickness
@@ -129,7 +138,12 @@ $(document).ready(function(){
         $('#rounded-edge').attr('src', roundedEdgePath);
         $('#rounded-edge').attr('alt', `Rounded Edge - ${twood_color}`);
 
-        loadImages();
+        if(frame_welded != "Custom RAL"){
+            loadImages();
+            $('.wood-color-selected').text(twood_color);
+        }else {
+            $('.wood-color-selected').text(twood_color);
+        }
 
         switch (twood_color) {
             case 'Clear Wax':
@@ -168,7 +182,14 @@ $(document).ready(function(){
         $('.leg-style .selected').removeClass('selected');
         $(this).parent().parent().addClass('selected');
         leg_style = $(this).val();
-        loadImages();
+
+        if(frame_welded != "Custom RAL"){
+            loadImages();
+            $('.leg-style-selected').text(leg_style);
+        }else {
+            $('.leg-style-selected').text(leg_style);
+        }
+
     });
 
     //leg finish or leg color
