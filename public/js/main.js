@@ -7,6 +7,7 @@ let frame_welded = "Welded";
 let timber_thickness = "35mm";
 let custom_table_size = "No";
 let table_top_finish = "Wax Polish";
+let old_val_frame_welded = frame_welded;
 
 const base_url = "img/Table and Bench Parts/";
 const canvas = document.getElementById('myCanvas');
@@ -196,12 +197,21 @@ $(document).ready(function(){
     $('input[type=radio][name=frame-welded]').change(function() {
         $('.leg-weld .selected').removeClass('selected');
         $(this).parent().parent().addClass('selected');
+
         frame_welded = $(this).val();
+        
 
         if(frame_welded != "Custom RAL"){
             loadImages();
             $('.leg-color-selected').text(frame_welded=='Unwelded'?'Black':'Raw Steel');
+
+            //keep record of the previous selected leg color except the custom RAL
+            old_val_frame_welded = frame_welded;
         }else {
+
+            //set the frame_welded value to the old value if RAL is selected
+            frame_welded = old_val_frame_welded;
+            loadImages();
             $('.leg-color-selected').text(frame_welded);
         }
 
