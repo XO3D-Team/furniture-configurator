@@ -3,11 +3,11 @@ let timber_grade = "Rustic";
 let tedge = "Live Edge";
 let twood_color = "Clear Wax";
 let leg_style = "Spider";
-let frame_welded = "Welded";
+let leg_color = "Welded";
 let timber_thickness = "35mm";
 let custom_table_size = "No";
 let table_top_finish = "Wax Polish";
-let old_val_frame_welded = frame_welded;
+let old_val_frame_welded = leg_color;
 
 const base_url = "img/Table and Bench Parts/";
 const canvas = document.getElementById('myCanvas');
@@ -35,7 +35,7 @@ $(document).ready(function(){
         $(this).parent().parent().addClass('selected');
         timber_grade = $(this).val();
 
-        if(frame_welded != "Custom RAL"){
+        if(leg_color != "Custom RAL"){
             loadImages();
             $('.timber-grade-selected').text(timber_grade=='Rustic'?'Rustic':'Wooden Planed');
         }else {
@@ -58,7 +58,7 @@ $(document).ready(function(){
         $(this).parent().parent().addClass('selected');
         tedge = $(this).val();
         
-        if(frame_welded != "Custom RAL"){
+        if(leg_color != "Custom RAL"){
             loadImages();
             $('.table-edge-selected').text(tedge);
         }else {
@@ -139,7 +139,7 @@ $(document).ready(function(){
         $('#rounded-edge').attr('src', roundedEdgePath);
         $('#rounded-edge').attr('alt', `Rounded Edge - ${twood_color}`);
 
-        if(frame_welded != "Custom RAL"){
+        if(leg_color != "Custom RAL"){
             loadImages();
             $('.wood-color-selected').text(twood_color);
         }else {
@@ -184,7 +184,7 @@ $(document).ready(function(){
         $(this).parent().parent().addClass('selected');
         leg_style = $(this).val();
 
-        if(frame_welded != "Custom RAL"){
+        if(leg_color != "Custom RAL"){
             loadImages();
             $('.leg-style-selected').text(leg_style);
         }else {
@@ -198,27 +198,27 @@ $(document).ready(function(){
         $('.leg-weld .selected').removeClass('selected');
         $(this).parent().parent().addClass('selected');
 
-        frame_welded = $(this).val();
+        leg_color = $(this).val();
         
 
-        if(frame_welded != "Custom RAL"){
+        if(leg_color != "Custom RAL"){
             loadImages();
-            $('.leg-color-selected').text(frame_welded=='Unwelded'?'Black':'Raw Steel');
+            $('.leg-color-selected').text(leg_color=='Unwelded'?'Black':'Raw Steel');
 
             //keep record of the previous selected leg color except the custom RAL
-            old_val_frame_welded = frame_welded;
+            old_val_frame_welded = leg_color;
         }else {
 
-            //set the frame_welded value to the old value if RAL is selected
-            frame_welded = old_val_frame_welded;
+            //set the leg_color value to the old value if RAL is selected
+            leg_color = old_val_frame_welded;
             loadImages();
-            $('.leg-color-selected').text(frame_welded);
+            $('.leg-color-selected').text(leg_color);
         }
 
-        if( frame_welded == "Welded" ){
+        if( leg_color == "Welded" ){
             $('.leg-weld .blurb').hide();
             $('.leg-weld .blurb.raw-steel').show();
-        }else if( frame_welded == "Unwelded" ){
+        }else if( leg_color == "Unwelded" ){
             $('.leg-weld .blurb').hide();
             $('.leg-weld .blurb.black').show();
         }else{
@@ -247,14 +247,41 @@ $(document).ready(function(){
 
     // Call the resizeCanvas function whenever the window is resized
     $(window).on('resize', resizeCanvas);
+
+    $( "#table-length" ).on( "blur", validateInput );
+    $( "#table-width" ).on( "blur", validateInput );
+
 });
+
+// Function to validate the input value
+function validateInput(event) {
+    const input = event.target; // Get the input element
+    
+    const value = input.value; // Get the input value
+
+    // Define a range for the valid input value
+    const min = 0; // Minimum valid value
+    const max = input.id == 'table-length' ? 300 : 132; // Maximum valid value
+
+    // Check if the value is within the valid range
+    if (value < min || value > max) {
+        // If the value is out of range, display an error message
+        alert(`Please enter a number between ${min} and ${max}.`);
+        
+        // Optionally, you can clear the input value
+        input.value = '';
+        
+        // Set focus back to the input element
+        input.focus();
+    }
+}
 
 function get_filepath(){
     return timber_grade + " " + tedge + " " + twood_color + ".png";
 }
 
 function get_legs_filepath(){
-    return leg_style + " Frame " + frame_welded + " Steel.png";
+    return leg_style + " Frame " + leg_color + " Steel.png";
 }
 
 function updateImages(){
