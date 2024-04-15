@@ -231,14 +231,19 @@ $(document).ready(function(){
     // Function to resize the canvas based on the device width
     function resizeCanvas() {
 
+        let _height = $('.left-pane')[0].clientWidth - 40;
+        let _width = (_height / 1.333);
+
         if(window.innerWidth < 1024){
-            canvas.width = 300; // Set canvas width to window width
-            canvas.height = 225; // Set canvas height to window height
+            canvas.width = _height // Set canvas width to window width
+            canvas.height = _width; // Set canvas height to window height
             // Redraw content on the canvas if necessary
             // For demonstration purposes, I'm just filling the canvas with a color
             // ctx.fillStyle = 'lightblue';
             // ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
+
+        loadImages();
         
     }
 
@@ -340,21 +345,21 @@ function drawImages(images) {
 
 window.onload = loadImages
 
-// Function to resize the canvas based on the device width
-function resizeCanvas() {
+// // Function to resize the canvas based on the device width
+// function resizeCanvas() {
 
-    if(window.innderWidth < 768){
-        canvas.width = window.innerWidth; // Set canvas width to window width
-        canvas.height = window.innerHeight; // Set canvas height to window height
-        // Redraw content on the canvas if necessary
-        // For demonstration purposes, I'm just filling the canvas with a color
-        // ctx.fillStyle = 'lightblue';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-}
+//     if(window.innderWidth < 768){
+//         canvas.width = window.innerWidth; // Set canvas width to window width
+//         canvas.height = window.innerHeight; // Set canvas height to window height
+//         // Redraw content on the canvas if necessary
+//         // For demonstration purposes, I'm just filling the canvas with a color
+//         // ctx.fillStyle = 'lightblue';
+//         // ctx.fillRect(0, 0, canvas.width, canvas.height);
+//     }
+// }
 
-// Call the resizeCanvas function initially
-resizeCanvas();
+// // Call the resizeCanvas function initially
+// resizeCanvas();
 
-// Call the resizeCanvas function whenever the window is resized
-window.addEventListener('resize', resizeCanvas);
+// // Call the resizeCanvas function whenever the window is resized
+// window.addEventListener('resize', resizeCanvas);

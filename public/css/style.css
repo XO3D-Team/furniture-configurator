@@ -39,7 +39,7 @@ ul {
 li {
     padding: 5px;
     font-size: 0.9rem;
-    border: 1px solid #E3E3E3;
+    border: 2px solid #E3E3E3;
     border-radius: 0;
 }
 
@@ -76,9 +76,8 @@ img.logo {
     height: 68px;
 }
 
-li.selected {
-    background-color: var(--green);
-    color: #fff;
+.selected {
+    border-color: var(--green);
 }
 
 label {
@@ -116,9 +115,9 @@ label {
     padding-top: 5px;
 }
 
-.table-edge .selected span {
+/* .table-edge .selected span {
     background-color: var(--green);
-}
+} */
 
 .timber-thickness, .table-size, .wood-color, .timber-grade, .table-edge, .table-top-finish, .leg-style, .leg-weld {
     flex-direction: column;
@@ -133,7 +132,7 @@ label {
 }
 
 .timber-thickness .selected, .table-size .selected, .table-top-finish .selected {
-    background-color: #000;
+    border-color: var(--green);
 }
 
 
@@ -225,9 +224,22 @@ input#ral-number {
     margin-top: 10px;
 }
 
+@media screen and (min-width: 1025px) {
+    .left-pane, .right-pane {
+        flex: 1;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px){
+    .main {
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 768px){
 
-    .container {
+    .container, .left-pane, .right-pane {
         width: 100%;
     }
     
@@ -239,6 +251,7 @@ input#ral-number {
 
     .right-pane {
         margin-top: 0;
+        width: 100%;
     }
 
     ul {
@@ -246,3 +259,4 @@ input#ral-number {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
