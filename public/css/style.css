@@ -144,6 +144,9 @@ label {
 
 .custom-tbl_size-fields {
     display: none;
+    border-top: 1px solid #e3e3e3;
+    padding-top: 10px;
+    margin-top: 10px;
 }
 
 .custom-tbl_size-fields ul {
