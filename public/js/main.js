@@ -1,7 +1,7 @@
 //defaults
 let timber_grade = "Rustic";
 let tedge = "Live Edge";
-let twood_color = "Clear Wax";
+let twood_color = "Forest";
 let leg_style = "Spider";
 let leg_color = "Welded";
 let timber_thickness = "35mm";
