@@ -37,9 +37,9 @@ $(document).ready(function(){
 
         if(leg_color != "Custom RAL"){
             loadImages();
-            $('.timber-grade-selected').text(timber_grade=='Rustic'?'Rustic':'Wooden Planed');
+            $('.timber-grade-selected').text(timber_grade=='Rustic'?'Rustic':'Modern Planed');
         }else {
-            $('.timber-grade-selected').text(timber_grade=='Rustic'?'Rustic':'Wooden Planed');
+            $('.timber-grade-selected').text(timber_grade=='Rustic'?'Rustic':'Modern Planed');
         }
 
         if( timber_grade == "Rustic" ){
@@ -202,30 +202,32 @@ $(document).ready(function(){
         
 
         if(leg_color != "Custom RAL"){
-            loadImages();
+            
             $('.leg-color-selected').text(leg_color=='Unwelded'?'Black':'Raw Steel');
+
+            if( leg_color == "Welded" ){
+                $('.leg-weld .blurb').hide();
+                $('.leg-weld .blurb.raw-steel').show();
+            }else if( leg_color == "Unwelded" ){
+                $('.leg-weld .blurb').hide();
+                $('.leg-weld .blurb.black').show();
+            }
+
+            loadImages();
 
             //keep record of the previous selected leg color except the custom RAL
             old_val_frame_welded = leg_color;
+
         }else {
+
+            $('.leg-color-selected').text('Custom RAL');
+            $('.leg-weld .blurb').hide();
+            $('.leg-weld .blurb.custom-ral').show();
 
             //set the leg_color value to the old value if RAL is selected
             leg_color = old_val_frame_welded;
             loadImages();
-            $('.leg-color-selected').text(leg_color);
         }
-
-        if( leg_color == "Welded" ){
-            $('.leg-weld .blurb').hide();
-            $('.leg-weld .blurb.raw-steel').show();
-        }else if( leg_color == "Unwelded" ){
-            $('.leg-weld .blurb').hide();
-            $('.leg-weld .blurb.black').show();
-        }else{
-            $('.leg-weld .blurb').hide();
-            $('.leg-weld .blurb.custom-ral').show();
-        }
-        
     });
 
     // Function to resize the canvas based on the device width
@@ -237,14 +239,10 @@ $(document).ready(function(){
         if(window.innerWidth < 1024){
             canvas.width = _height // Set canvas width to window width
             canvas.height = _width; // Set canvas height to window height
-            // Redraw content on the canvas if necessary
-            // For demonstration purposes, I'm just filling the canvas with a color
-            // ctx.fillStyle = 'lightblue';
-            // ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
 
+        // Redraw content on the canvas if necessary
         loadImages();
-        
     }
 
     // Call the resizeCanvas function initially
@@ -344,22 +342,3 @@ function drawImages(images) {
 }
 
 window.onload = loadImages
-
-// // Function to resize the canvas based on the device width
-// function resizeCanvas() {
-
-//     if(window.innderWidth < 768){
-//         canvas.width = window.innerWidth; // Set canvas width to window width
-//         canvas.height = window.innerHeight; // Set canvas height to window height
-//         // Redraw content on the canvas if necessary
-//         // For demonstration purposes, I'm just filling the canvas with a color
-//         // ctx.fillStyle = 'lightblue';
-//         // ctx.fillRect(0, 0, canvas.width, canvas.height);
-//     }
-// }
-
-// // Call the resizeCanvas function initially
-// resizeCanvas();
-
-// // Call the resizeCanvas function whenever the window is resized
-// window.addEventListener('resize', resizeCanvas);

@@ -20,8 +20,42 @@
             
             <h2>Build Your Table</h2>
             <h3>Tops (Table & Bench)</h3>
-            <p class="subheading">Choose edge profile: <span class="timber-grade-selected">Rustic</span></p>
-            
+
+            <p class="subheading">Require a custom table size?: <span class="table-size-selected">No</span></p>
+            <div class="container table-size">
+                <ul>
+                    <li>
+                        <label class="radio-container">
+                            <input type="radio" name="table-size" value="Yes" />
+                            <span>Yes</span>
+                        </label>
+                    </li>
+                    <li class="selected">
+                        <label class="radio-container">
+                            <input type="radio" name="table-size" value="No" checked="checked"/>
+                            <span>No</span>
+                        </label>
+                    </li>
+                </ul>
+                <div class="container custom-tbl_size-fields">
+                    <ul>
+                        <li>
+                            <label for="table-length">
+                                LENGTH (cm) Max 300cm:
+                            </label>
+                            <input type="number" name="tlength" id="table-length" min="1" max="300" />
+                        </li>
+                        <li>
+                            <label for="table-width">
+                                WIDTH (cm) Max 132cm:
+                            </label>
+                            <input type="number" name="twidth" id="table-width" min="1" max="132" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="subheading">Choose timber type: <span class="timber-grade-selected">Rustic</span></p>
             <div class="container timber-grade">
                 <ul>
                     <li class="selected">
@@ -35,7 +69,7 @@
                         <label class="radio-container">
                             <input type="radio" name="timber-grade" value="Smooth" />
                             <img id="smooth-finish" src="img/Material Swatches/Swatch - Clear Wax.png" alt="Image" class="radio-img">
-                            Wooden Planed
+                            Modern Planed
                         </label>
                     </li>
                 </ul>
@@ -88,40 +122,6 @@
                 <p class="warning"><span>!</span>For tables over 180cm we recommend a thickness of 50mm</p>
             </div>
 
-            <p class="subheading">Require a custom table size?: <span class="table-size-selected">No</span></p>
-            <div class="container table-size">
-                <ul>
-                    <li>
-                        <label class="radio-container">
-                            <input type="radio" name="table-size" value="Yes" />
-                            <span>Yes</span>
-                        </label>
-                    </li>
-                    <li class="selected">
-                        <label class="radio-container">
-                            <input type="radio" name="table-size" value="No" checked="checked"/>
-                            <span>No</span>
-                        </label>
-                    </li>
-                </ul>
-                <div class="container custom-tbl_size-fields">
-                    <ul>
-                        <li>
-                            <label for="table-length">
-                                LENGTH (cm) Max 300cm:
-                            </label>
-                            <input type="number" name="tlength" id="table-length" min="1" max="300" />
-                        </li>
-                        <li>
-                            <label for="table-width">
-                                WIDTH (cm) Max 132cm:
-                            </label>
-                            <input type="number" name="twidth" id="table-width" min="1" max="132" />
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
             <p class="subheading">Choose table top finish: <span class="table-top-finish-selected">Wax Polish</span></p>
             <div class="container table-top-finish">
                 <ul>
@@ -149,9 +149,9 @@
             <p class="subheading">Choose wood colour: <span class="wood-color-selected">Clear Wax</span></p>
             <div class="container wood-color">
                 <ul>
-                    <li class="selected">
+                    <li >
                         <label class="radio-container">
-                            <input type="radio" name="table-wood-color" value="Clear Wax" checked="checked"/>
+                            <input type="radio" name="table-wood-color" value="Clear Wax" />
                             <img src="img/Material Swatches/Rustic Swatch - Clear Wax.png" alt="Clear Wax" class="radio-img">
                             Clear Wax
                         </label>
@@ -177,9 +177,9 @@
                             Antique Oak
                         </label>
                     </li>
-                    <li>
+                    <li class="selected">
                         <label class="radio-container">
-                            <input type="radio" name="table-wood-color" value="Forest" />
+                            <input type="radio" name="table-wood-color" value="Forest" checked="checked" />
                             <img src="img/Material Swatches/Swatch - Forest.png" alt="Forest" class="radio-img">
                             Forest
                         </label>
@@ -291,23 +291,15 @@
                         </label>
                     </li>
                 </ul>
-                <div class="container blurb raw-steel show">
-                    <div>
-                        <img src="img/raw steel leg finish.avif" alt="clear coat of lacquer over raw steel">
-                        <p class="text">The clear coat of lacquer over raw steel with visible welds provides a gracious raw industrial finish. Our coatings are recommended for indoor use only. Contact us prior to ordering if you wish to use the table outside.</p>
-                    </div>
-                    
+                <div class="container blurb raw-steel show"> 
+                    <p class="text">The clear coat of lacquer over raw steel with visible welds provides a gracious raw industrial finish. Our coatings are recommended for indoor use only. Contact us prior to ordering if you wish to use the table outside.</p>
                 </div>
                 <div class="container blurb black">
-                    <div>
-                        <img src="img/black leg finish.avif" alt="Satin black powder coat">
-                        <p class="text">Satin black powder coat provides a tough protective layer. Our unique surface conditioning operation on all steel provides a beautifully clean and uniform look. Our coatings are recommended for indoor use only.</p>
-                    </div>
+                    <p class="text">Satin black powder coat provides a tough protective layer. Our unique surface conditioning operation on all steel provides a beautifully clean and uniform look. Our coatings are recommended for indoor use only.</p>                
                 </div>
                 <div class="container blurb custom-ral">
-                    <div>
-                        <p class="text">We are able to offer any RAL colour powder coat finish. Please provide the required RAL colour in the below text box. All powder coats are satin finish and provide a tough protective layer. Our coatings are recommended for indoor use only. Contact us prior to ordering if you wish to use the table outside.</p>
-                    </div>
+                    <p class="text">We are able to offer any RAL colour powder coat finish. Please provide the required RAL colour in the below text box. All powder coats are satin finish and provide a tough protective layer. Our coatings are recommended for indoor use only. Contact us prior to ordering if you wish to use the table outside.</p>
+                    
                     <div class="container">
                         <label for="table-length">
                             Enter RAL number here:
